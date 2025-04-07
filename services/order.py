@@ -32,8 +32,8 @@ def create_order(
     if type(date) == str:
         date = datetime.strptime(date, "%Y-%m-%d %H:%M")
     if date:
-        print("order_id: ", order.pk)
-        Order.objects.filter(pk=order.pk).update(created_at=date)
+        order.created_at = date
+        order.save()
 
     return order
 
